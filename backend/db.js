@@ -13,6 +13,6 @@ const todoSchema = mongoose.Schema({
 
 const Todo = mongoose.model("todos",todoSchema);
 
-model.export ={
+module.exports ={
     Todo,
 }
