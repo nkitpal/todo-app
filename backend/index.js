@@ -1,15 +1,20 @@
 const express = require("express");
 const {createTodo, updateTodo } = require("./types")
 const { Todo } = require("./db");
+const cors = require("cors");
 const app = express();
 const PORT = 3000;
 
+app.use(cors({
+    origin:"http://localhost:5173"
+}))
 app.use(express.json());
 
 app.post('/todo', async (req, res, next) => {
 
     try{
         const payload = req.body;
+        console.log(req.body);
         const parsedPayload = createTodo.safeParse(payload);
         
         if(!parsedPayload.success){
